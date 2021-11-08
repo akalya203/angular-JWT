@@ -1,0 +1,9 @@
+<div class="container">
+    <h2>Welcome</h2>
+    <a (click)=showBooks()>Show all books</a>
+    
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let book of books">{{book}}</li>
+    </ul>
+    
+</div>

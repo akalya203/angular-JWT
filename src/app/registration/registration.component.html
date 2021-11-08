@@ -1,0 +1,48 @@
+<h3>New User Register Here</h3>
+<hr/>
+
+<form #registrationForm="ngForm" (ngSubmit)="handleForm()">
+    <!--<h5>{{userForm.value | json}}</h5>
+    <hr/>
+    <h5>{{registration | json}}</h5> -->
+<div class="form-group">
+    <label>Name</label>
+    <input  [class.is-invalid]="name.invalid && name.touched" required name="name" #name="ngModel"   [(ngModel)]="user.name" type="text" 
+    class="form-control">
+    <small [class.d-none]="name.valid || name.untouched" class="text-danger"> Name Required</small>
+</div>
+<div class="form-group">
+    <label>Username</label>
+    <input required name="username" #username="ngModel" 
+    [class.is-invalid]="username.invalid && username.touched"
+    [(ngModel)]="user.username" type="text" class="form-control">
+    <small [class.d-none]="username.valid || username.untouched" class="text-danger">Username Required</small>
+</div>
+<div class="form-group">
+    <label>Password</label>
+    <input required #password="ngModel" [class.is-invalid]="password.invalid && password.touched" type="password" [(ngModel)]="user.password" name="password"   class="form-control">
+    <small [class.d-none]="password.valid || password.untouched" class="text-danger">password is Required</small>
+</div>
+<div class="form-group">
+    <label>Gender</label>
+    <input required #gender="ngModel" [class.is-invalid]="gender.invalid && gender.touched" name="gender" [(ngModel)]="user.gender"  type="text" class="form-control">
+    <small [class.d-none]="gender.valid || gender.untouched" class="text-danger">gender is Required</small>
+</div>
+
+    <!--<input required #role="ngModel" [class.is-invalid]="role.invalid && role.touched" name="role" [(ngModel)]="user.role"  type="text" class="form-control">
+    <small [class.d-none]="role.valid || role.untouched" class="text-danger">Role is Required</small> -->
+
+<div class="form-group">
+    <label>Role</label>
+    <select class="form-control" multiple="multiple" name="roles" #role="ngModel" [(ngModel)]="user.roles">
+        <option value="">--Select Your Role--</option>
+        <option value={{role}} *ngFor="let role of roles">{{role}}</option>
+        </select>
+</div> 
+
+
+
+<button class="m-2 btn btn-primary">Register</button>
+    <a routerLink="/login" class="btn btn-info">Existing User?Login</a>
+</form>
+<h5>{{msg2["msg"]}}</h5>
